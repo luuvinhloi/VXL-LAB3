@@ -96,13 +96,14 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  status1 = 1;
+  status2 = 1;
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
 	  fsm_automatic_run();
-	  fsm_manual_run();
   }
   /* USER CODE END 3 */
 }

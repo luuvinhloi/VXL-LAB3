@@ -12,17 +12,22 @@
 #include "software_timer.h"
 #include "button.h"
 
-#define INIT 			10
-#define AUTO_LED7_0 	0
-#define AUTO_LED7_1 	1
-#define AUTO_LED7_2 	2
-#define AUTO_LED7_3 	3
-#define AUTO_LED7_4 	4
-#define AUTO_LED7_5 	5
-#define AUTO_LED7_6 	6
-#define AUTO_LED7_7 	7
-#define AUTO_LED7_8 	8
-#define AUTO_LED7_9 	9
+#define INIT 			1
+
+#define AUTO_RED 		2
+#define AUTO_YELLOW 	3
+#define AUTO_GREEN 		4
+
+#define AUTO_LED7_0 	10
+#define AUTO_LED7_1 	11
+#define AUTO_LED7_2 	12
+#define AUTO_LED7_3 	13
+#define AUTO_LED7_4 	14
+#define AUTO_LED7_5 	15
+#define AUTO_LED7_6 	16
+#define AUTO_LED7_7 	17
+#define AUTO_LED7_8 	18
+#define AUTO_LED7_9 	19
 
 #define TurnOnLed		20
 #define TurnOffLed		21
@@ -38,7 +43,8 @@
 #define MAN_LED7_8		38
 #define MAN_LED7_9		39
 
-extern int status;
+extern int status1;
+extern int status2;
 extern int counter;
 
 #endif /* INC_GLOBAL_H_ */

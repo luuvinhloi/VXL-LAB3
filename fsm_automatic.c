@@ -9,254 +9,82 @@
 
 void fsm_automatic_run()
 {
-	switch(counter) {
+	//MODE 1: Normal mode
+	switch(status1) {
 		case INIT:
-			//TODO
-			counter = AUTO_LED7_9;
-			setTimer1(100);
+			HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, SET);
+			HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, SET);
+			HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, SET);
+			status1 = AUTO_RED;
+			setTimer1(500);
 			break;
-		case AUTO_LED7_9:
-			//TODO
-			GPIOB->ODR = 0x90;
-
+		case AUTO_RED: //TURN ON LED_RED
+			HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, RESET);
+			HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, SET);
+			HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, SET);
 			if(timer1_flag == 1) {
-				counter = AUTO_LED7_8;
-				setTimer1(100);
-			}
-
-			if(isButton1Pressed() == 1) { //RESET the counter value is 0
-				counter = MAN_LED7_0;
-				setTimer1(1000);
-			}
-
-			if(isButton2Pressed() == 1) { //INCREASE the counter is increased by 1
-				counter = MAN_LED7_0;
-				setTimer1(1000);
-			}
-
-			if(isButton3Pressed() == 1) { //Decrease the counter is decreased by 1
-				counter = MAN_LED7_0;
-				setTimer1(1000);
+				status1 = AUTO_GREEN;
+				setTimer1(300);
 			}
 			break;
-		case AUTO_LED7_8:
-			//TODO
-			GPIOB->ODR = 0x80;
-
+		case AUTO_GREEN: //TURN ON LED_GREEEN
+			HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, SET);
+			HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, SET);
+			HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, RESET);
 			if(timer1_flag == 1) {
-				counter = AUTO_LED7_7;
-				setTimer1(100);
-			}
-
-			if(isButton1Pressed() == 1) { //RESET the counter value is 0
-				counter = MAN_LED7_0;
-				setTimer1(1000);
-			}
-
-			if(isButton2Pressed() == 1) { //INCREASE the counter is increased by 1
-				counter = MAN_LED7_0;
-				setTimer1(1000);
-			}
-
-			if(isButton3Pressed() == 1) { //Decrease the counter is decreased by 1
-				counter = MAN_LED7_0;
-				setTimer1(1000);
+				status1 = AUTO_YELLOW;
+				setTimer1(200);
 			}
 			break;
-		case AUTO_LED7_7:
-			//TODO
-			GPIOB->ODR = 0xF8;
-
+		case AUTO_YELLOW:
+			HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, SET);
+			HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, RESET);
+			HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, SET);
 			if(timer1_flag == 1) {
-				counter = AUTO_LED7_6;
-				setTimer1(100);
-			}
-
-			if(isButton1Pressed() == 1) { //RESET the counter value is 0
-				counter = MAN_LED7_0;
-				setTimer1(1000);
-			}
-
-			if(isButton2Pressed() == 1) { //INCREASE the counter is increased by 1
-				counter = MAN_LED7_0;
-				setTimer1(1000);
-			}
-
-			if(isButton3Pressed() == 1) { //Decrease the counter is decreased by 1
-				counter = MAN_LED7_0;
-				setTimer1(1000);
-			}
-			break;
-		case AUTO_LED7_6:
-			//TODO
-			GPIOB->ODR = 0x82;
-
-			if(timer1_flag == 1) {
-				counter = AUTO_LED7_5;
-				setTimer1(100);
-			}
-
-			if(isButton1Pressed() == 1) { //RESET the counter value is 0
-				counter = MAN_LED7_0;
-				setTimer1(1000);
-			}
-
-			if(isButton2Pressed() == 1) { //INCREASE the counter is increased by 1
-				counter = MAN_LED7_0;
-				setTimer1(1000);
-			}
-
-			if(isButton3Pressed() == 1) { //Decrease the counter is decreased by 1
-				counter = MAN_LED7_0;
-				setTimer1(1000);
-			}
-			break;
-		case AUTO_LED7_5:
-			//TODO
-			GPIOB->ODR = 0x92;
-
-			if(timer1_flag == 1) {
-				counter = AUTO_LED7_4;
-				setTimer1(100);
-			}
-
-			if(isButton1Pressed() == 1) { //RESET the counter value is 0
-				counter = MAN_LED7_0;
-				setTimer1(1000);
-			}
-
-			if(isButton2Pressed() == 1) { //INCREASE the counter is increased by 1
-				counter = MAN_LED7_0;
-				setTimer1(1000);
-			}
-
-			if(isButton3Pressed() == 1) { //Decrease the counter is decreased by 1
-				counter = MAN_LED7_0;
-				setTimer1(1000);
-			}
-			break;
-		case AUTO_LED7_4:
-			//TODO
-			GPIOB->ODR = 0x99;
-
-			if(timer1_flag == 1) {
-				counter = AUTO_LED7_3;
-				setTimer1(100);
-			}
-
-			if(isButton1Pressed() == 1) { //RESET the counter value is 0
-				counter = MAN_LED7_0;
-				setTimer1(1000);
-			}
-
-			if(isButton2Pressed() == 1) { //INCREASE the counter is increased by 1
-				counter = MAN_LED7_0;
-				setTimer1(1000);
-			}
-
-			if(isButton3Pressed() == 1) { //Decrease the counter is decreased by 1
-				counter = MAN_LED7_0;
-				setTimer1(1000);
-			}
-			break;
-		case AUTO_LED7_3:
-			//TODO
-			GPIOB->ODR = 0xB0;
-
-			if(timer1_flag == 1) {
-				counter = AUTO_LED7_2;
-				setTimer1(100);
-			}
-
-			if(isButton1Pressed() == 1) { //RESET the counter value is 0
-				counter = MAN_LED7_0;
-				setTimer1(1000);
-			}
-
-			if(isButton2Pressed() == 1) { //INCREASE the counter is increased by 1
-				counter = MAN_LED7_0;
-				setTimer1(1000);
-			}
-
-			if(isButton3Pressed() == 1) { //Decrease the counter is decreased by 1
-				counter = MAN_LED7_0;
-				setTimer1(1000);
-			}
-			break;
-		case AUTO_LED7_2:
-			//TODO
-			GPIOB->ODR = 0xA4;
-
-			if(timer1_flag == 1) {
-				counter = AUTO_LED7_1;
-				setTimer1(1000);
-			}
-
-			if(isButton1Pressed() == 1) { //RESET the counter value is 0
-				counter = MAN_LED7_0;
-				setTimer1(1000);
-			}
-
-			if(isButton2Pressed() == 1) { //INCREASE the counter is increased by 1
-				counter = MAN_LED7_0;
-				setTimer1(1000);
-			}
-
-			if(isButton3Pressed() == 1) { //Decrease the counter is decreased by 1
-				counter = MAN_LED7_0;
-				setTimer1(1000);
-			}
-			break;
-		case AUTO_LED7_1:
-			//TODO
-			GPIOB->ODR = 0xF9;
-
-			if(timer1_flag == 1) {
-				counter = AUTO_LED7_0;
-				setTimer1(100);
-			}
-
-			if(isButton1Pressed() == 1) { //RESET the counter value is 0
-				counter = MAN_LED7_0;
-				setTimer1(1000);
-			}
-
-			if(isButton2Pressed() == 1) { //INCREASE the counter is increased by 1
-				counter = MAN_LED7_0;
-				setTimer1(1000);
-			}
-
-			if(isButton3Pressed() == 1) { //Decrease the counter is decreased by 1
-				counter = MAN_LED7_0;
-				setTimer1(1000);
-			}
-			break;
-		case AUTO_LED7_0:
-			//TODO
-			GPIOB->ODR = 0xC0;
-
-			if(timer1_flag == 1) {
-				counter = AUTO_LED7_9;
-				setTimer1(100);
-			}
-
-			if(isButton1Pressed() == 1) { //RESET the counter value is 0
-				counter = MAN_LED7_0;
-				setTimer1(1000);
-			}
-
-			if(isButton2Pressed() == 1) { //INCREASE the counter is increased by 1
-				counter = MAN_LED7_0;
-				setTimer1(1000);
-			}
-
-			if(isButton3Pressed() == 1) { //Decrease the counter is decreased by 1
-				counter = MAN_LED7_0;
-				setTimer1(1000);
+				status1 = AUTO_RED;
+				setTimer1(500);
 			}
 			break;
 		default:
 			break;
-
 	}
+
+	switch(status2) {
+			case INIT:
+				HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, SET);
+				HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_YELLOW1_Pin, SET);
+				HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, SET);
+				status2 = AUTO_GREEN;
+				setTimer2(300);
+				break;
+			case AUTO_GREEN: //TURN ON LED_GREEEN
+				HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, SET);
+				HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_YELLOW1_Pin, SET);
+				HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, RESET);
+				if(timer2_flag == 1) {
+					status2 = AUTO_YELLOW;
+					setTimer2(200);
+				}
+				break;
+			case AUTO_YELLOW:
+				HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, SET);
+				HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_YELLOW1_Pin, RESET);
+				HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, SET);
+				if(timer2_flag == 1) {
+					status2 = AUTO_RED;
+					setTimer2(500);
+				}
+				break;
+			case AUTO_RED: //TURN ON LED_RED
+				HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, RESET);
+				HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_YELLOW1_Pin, SET);
+				HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, SET);
+				if(timer2_flag == 1) {
+					status2 = AUTO_GREEN;
+					setTimer2(300);
+				}
+				break;
+			default:
+				break;
+		}
 }
