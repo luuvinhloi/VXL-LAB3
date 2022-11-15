@@ -22,6 +22,7 @@ void fsm_automatic_run()
 			HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, RESET);
 			HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, SET);
 			HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, SET);
+			GPIOA->ODR = 0x006D; // Displaying 5
 			if(timer1_flag == 1) {
 				status1 = AUTO_GREEN;
 				setTimer1(300);
@@ -31,6 +32,7 @@ void fsm_automatic_run()
 			HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, SET);
 			HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, SET);
 			HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, RESET);
+			GPIOA->ODR = 0x004F; // Displaying 3
 			if(timer1_flag == 1) {
 				status1 = AUTO_YELLOW;
 				setTimer1(200);
@@ -40,6 +42,7 @@ void fsm_automatic_run()
 			HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, SET);
 			HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, RESET);
 			HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, SET);
+			GPIOA->ODR = 0x005B; // Displaying 2
 			if(timer1_flag == 1) {
 				status1 = AUTO_RED;
 				setTimer1(500);
@@ -61,6 +64,7 @@ void fsm_automatic_run()
 				HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, SET);
 				HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_YELLOW1_Pin, SET);
 				HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, RESET);
+				GPIOB->ODR = 0x004F; // Displaying 3
 				if(timer2_flag == 1) {
 					status2 = AUTO_YELLOW;
 					setTimer2(200);
@@ -70,6 +74,7 @@ void fsm_automatic_run()
 				HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, SET);
 				HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_YELLOW1_Pin, RESET);
 				HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, SET);
+				GPIOB->ODR = 0x005B; // Displaying 2
 				if(timer2_flag == 1) {
 					status2 = AUTO_RED;
 					setTimer2(500);
@@ -79,6 +84,7 @@ void fsm_automatic_run()
 				HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, RESET);
 				HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_YELLOW1_Pin, SET);
 				HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, SET);
+				GPIOB->ODR = 0x006D; // Displaying 5
 				if(timer2_flag == 1) {
 					status2 = AUTO_GREEN;
 					setTimer2(300);
